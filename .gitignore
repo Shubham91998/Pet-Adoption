@@ -1,0 +1,25 @@
+# Ignore environment variables file
+.env
+
+# Ignore node_modules directory
+node_modules/
+
+
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build output
+dist
+build
+
+# Other files to ignore
+.DS_Store
+Thumbs.db
