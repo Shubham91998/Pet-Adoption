@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const petRoute = require("./routes/pet");
 const userRoute = require("./routes/user");
+const originalpetRoute = require("./routes/originalpet")
 
 
 const app = express();
@@ -27,7 +28,7 @@ try {
 } catch (error) {
   console.log("Error: ", error);
 }
-
+app.use("/original/pets", originalpetRoute)
 app.use("/pets", petRoute);
 app.use("/user", userRoute);
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const { getPet, petUpload, submitPetRequest } = require("../controllers/pet");
+const { getPet, petUpload, submitPetRequest, deletePet } = require("../controllers/pet");
 const {
     getAllPetRequests,
     verifyPetRequest,
@@ -7,6 +7,9 @@ const {
     processStatusInformation,
     getUserPetRequest, 
 } = require("../controllers/adopter");
+
+
+
 const upload = require("../middleware/multer");
 
 const router = express.Router();
@@ -25,5 +28,5 @@ router.post("/petrequest", submitPetRequest);
 router.put("/pet-requests/:id/update-status", processStatusInformation);
 
 router.post("/petpost", upload.fields([{ name: "image", maxCount: 1 }]), petUpload);
-
+router.delete("/deletepet/:id", deletePet)
 module.exports = router;

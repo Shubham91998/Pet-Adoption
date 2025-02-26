@@ -74,10 +74,22 @@ const petUpload = asyncHandler(async (req, res) => {
     console.error("Error saving pet:", error); // Log the error for debugging
     res.status(400).json({ message: error.message });
   }
+  
 });
+
+const deletePet = async(req, res) => {
+  try {
+    const pet = await Pet.findByIdAndDelete(req.params.id);
+    if (!pet) return res.status(404).json({ message: "Pet not found" });
+    res.status(200).json({ message: "Pet deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
 
 module.exports = {
   getPet,
   petUpload,
   submitPetRequest,
+  deletePet,
 };
